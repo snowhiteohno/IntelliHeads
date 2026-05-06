@@ -5,7 +5,407 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>InteliHeads — AI &amp; Robotics in Education</title>
 <meta name="description" content="InteliHeads: AI Thinkering Labs, Robotics training, MSME transformation and skill development solutions across India.">
-<link rel="stylesheet" href="style.css">
+<link rel="stylesheet" href="style.css?v=2">
+<style>
+/* ================================================================
+   InteliHeads — style.css
+   Palette: Deep Ink Navy · Circuit Teal · Copper Orange · Slate White
+   ================================================================ */
+
+@import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300&family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,600;0,9..144,700;1,9..144,300&display=swap');
+
+/* ── TOKENS ── */
+:root {
+  --ink:        #0d1a2e;
+  --ink-mid:    #152540;
+  --ink-light:  #1e3358;
+  --teal:       #0eb3c8;
+  --teal-dim:   #0a8fa0;
+  --copper:     #e8733a;
+  --copper-dim: #c05e2a;
+  --slate:      #f2f5f9;
+  --border:     #cdd6e2;
+  --border-dark: rgba(255,255,255,0.08);
+  --text:       #1c2c40;
+  --muted:      #6a7e96;
+  --white:      #ffffff;
+
+  --ff-display: 'Fraunces', Georgia, serif;
+  --ff-body:    'Plus Jakarta Sans', system-ui, sans-serif;
+
+  --ease-out:   cubic-bezier(0.22, 1, 0.36, 1);
+  --shadow-sm:  0 1px 3px rgba(0,0,0,0.08);
+  --shadow-md:  0 4px 20px rgba(0,0,0,0.1);
+  --shadow-lg:  0 12px 40px rgba(0,0,0,0.16);
+}
+
+/* ── RESET ── */
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+html { scroll-behavior: smooth; font-size: 16px; }
+body {
+  font-family: var(--ff-body);
+  color: var(--text);
+  background: var(--white);
+  line-height: 1.65;
+  -webkit-font-smoothing: antialiased;
+}
+a { color: inherit; text-decoration: none; }
+img { display: block; max-width: 100%; }
+ul { list-style: none; }
+
+/* ── LAYOUT ── */
+.container { max-width: 1180px; margin: 0 auto; padding: 0 28px; }
+section { padding: 88px 0; }
+
+/* ── TYPOGRAPHY ── */
+.section-eyebrow {
+  display: inline-block;
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--teal);
+  margin-bottom: 12px;
+  position: relative;
+  padding-left: 22px;
+}
+.section-eyebrow::before {
+  content: '';
+  position: absolute;
+  left: 0; top: 50%;
+  transform: translateY(-50%);
+  width: 14px; height: 2px;
+  background: var(--teal);
+}
+.section-title {
+  font-family: var(--ff-display);
+  font-size: clamp(28px, 3.5vw, 42px);
+  font-weight: 600;
+  line-height: 1.12;
+  color: var(--ink);
+  letter-spacing: -0.02em;
+  margin-bottom: 16px;
+}
+.section-title em { font-style: italic; color: var(--teal); }
+.section-sub {
+  font-size: 16px;
+  color: var(--muted);
+  line-height: 1.75;
+  max-width: 540px;
+}
+
+/* ── BUTTONS ── */
+.btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 13px 28px;
+  border-radius: 6px;
+  font-family: var(--ff-body);
+  font-size: 14px;
+  font-weight: 600;
+  cursor: pointer;
+  border: none;
+  transition: all 0.2s var(--ease-out);
+  text-decoration: none;
+}
+.btn-primary {
+  background: var(--teal);
+  color: var(--ink);
+}
+.btn-primary:hover {
+  background: #12c9e0;
+  transform: translateY(-2px);
+  box-shadow: 0 6px 20px rgba(14,179,200,0.35);
+}
+.btn-outline {
+  background: transparent;
+  color: var(--white);
+  border: 1.5px solid rgba(255,255,255,0.28);
+}
+.btn-outline:hover {
+  border-color: var(--teal);
+  background: rgba(14,179,200,0.1);
+}
+.btn-ghost {
+  background: transparent;
+  color: var(--teal);
+  border: 1.5px solid var(--teal);
+  padding: 10px 22px;
+  font-size: 13px;
+}
+.btn-ghost:hover {
+  background: var(--teal);
+  color: var(--ink);
+}
+
+/* ================================================================
+   NAVIGATION
+   ================================================================ */
+#nav {
+  position: sticky;
+  top: 0;
+  z-index: 200;
+  background: linear-gradient(180deg, rgba(13,26,46,1) 0%, rgba(13,26,46,0.98) 100%);
+  border-bottom: 2px solid;
+  border-image: linear-gradient(90deg, var(--teal), var(--copper), var(--teal)) 1;
+  box-shadow: 0 4px 24px rgba(0,0,0,0.25);
+}
+.nav-inner {
+  display: flex;
+  align-items: center;
+  height: 76px;
+  gap: 20px;
+}
+.nav-logo {
+  display: flex;
+  align-items: center;
+  gap: 11px;
+  flex-shrink: 0;
+  text-decoration: none;
+}
+.nav-logo img {
+  height: 48px;
+  width: auto;
+  border-radius: 8px;
+  background: transparent;
+  border: 1.5px solid rgba(14,179,200,0.25);
+  padding: 2px;
+  box-shadow: 0 0 12px rgba(14,179,200,0.15);
+}
+.nav-logo-text {
+  display: flex;
+  flex-direction: column;
+  line-height: 1.1;
+}
+.nav-logo-text .brand {
+  font-family: var(--ff-body);
+  font-weight: 700;
+  font-size: 18px;
+  color: var(--white);
+  letter-spacing: 0.03em;
+}
+.nav-logo-text .brand span { color: var(--teal); }
+.nav-logo-text .tagline {
+  font-size: 10px;
+  color: #6a7e96;
+  font-weight: 400;
+  letter-spacing: 0.04em;
+}
+.nav-links {
+  display: flex;
+  align-items: center;
+  gap: 2px;
+  margin-left: auto;
+}
+.nav-links > li { position: relative; }
+.nav-links li a {
+  display: block;
+  padding: 9px 15px;
+  font-size: 14.5px;
+  font-weight: 500;
+  color: #8a9fb8;
+  border-radius: 6px;
+  transition: color 0.22s, background 0.22s;
+}
+.nav-links li:hover > a {
+  color: var(--white);
+}
+.nav-cta {
+  margin-left: 10px;
+  background: var(--teal) !important;
+  color: var(--ink) !important;
+  font-weight: 700 !important;
+  padding: 10px 24px !important;
+  border-radius: 6px;
+  transition: background 0.2s, transform 0.2s, box-shadow 0.2s !important;
+}
+.nav-cta:hover { background: #12c9e0 !important; transform: translateY(-1px); box-shadow: 0 4px 16px rgba(14,179,200,0.3); }
+.nav-hamburger {
+  display: none;
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 6px;
+  margin-left: auto;
+}
+.nav-hamburger span {
+  display: block;
+  width: 22px;
+  height: 2px;
+  background: var(--white);
+  margin: 5px 0;
+  transition: all 0.3s;
+}
+
+/* ================================================================
+   HERO
+   ================================================================ */
+#hero {
+  background: var(--ink);
+  color: var(--white);
+  padding: 100px 0 80px;
+  position: relative;
+  overflow: hidden;
+}
+.hero-grid-overlay {
+  position: absolute;
+  inset: 0;
+  background-image:
+    linear-gradient(rgba(14,179,200,0.05) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(14,179,200,0.05) 1px, transparent 1px);
+  background-size: 52px 52px;
+  pointer-events: none;
+}
+.hero-glow {
+  position: absolute;
+  top: -80px; right: -80px;
+  width: 500px; height: 500px;
+  background: radial-gradient(circle, rgba(14,179,200,0.1) 0%, transparent 65%);
+  pointer-events: none;
+}
+.hero-inner {
+  position: relative;
+  z-index: 1;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 60px;
+  align-items: center;
+}
+.hero-tag {
+  display: inline-flex;
+  align-items: center;
+  gap: 7px;
+  background: rgba(14,179,200,0.12);
+  border: 1px solid rgba(14,179,200,0.28);
+  color: var(--teal);
+  font-size: 11.5px;
+  font-weight: 600;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  padding: 5px 14px;
+  border-radius: 20px;
+  margin-bottom: 22px;
+}
+.hero-tag .dot {
+  width: 6px; height: 6px;
+  border-radius: 50%;
+  background: var(--teal);
+  animation: pulse 2s ease-in-out infinite;
+}
+@keyframes pulse {
+  0%, 100% { opacity: 1; transform: scale(1); }
+  50% { opacity: 0.5; transform: scale(0.7); }
+}
+.hero-headline {
+  font-family: var(--ff-display);
+  font-size: clamp(36px, 4.5vw, 56px);
+  font-weight: 300;
+  line-height: 1.08;
+  letter-spacing: -0.02em;
+  margin-bottom: 24px;
+  color: var(--white);
+}
+.hero-headline strong {
+  font-weight: 700;
+  display: block;
+}
+.hero-headline em {
+  font-style: italic;
+  color: var(--teal);
+}
+.hero-sub {
+  font-size: 16.5px;
+  color: #8090a8;
+  line-height: 1.78;
+  margin-bottom: 36px;
+  max-width: 460px;
+}
+.hero-btns { display: flex; gap: 12px; flex-wrap: wrap; }
+.hero-stats {
+  display: flex;
+  gap: 28px;
+  margin-top: 40px;
+  padding-top: 36px;
+  border-top: 1px solid rgba(255,255,255,0.08);
+}
+.stat-item {}
+.stat-num {
+  font-family: var(--ff-display);
+  font-size: 26px;
+  font-weight: 600;
+  color: var(--white);
+}
+.stat-num span { color: var(--teal); }
+.stat-label {
+  font-size: 12px;
+  color: var(--muted);
+  margin-top: 2px;
+}
+.hero-cards {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 14px;
+}
+.hero-card {
+  background: var(--ink-mid);
+  border: 1px solid var(--border-dark);
+  border-radius: 12px;
+  padding: 22px 20px;
+  transition: border-color 0.2s, transform 0.2s;
+}
+.hero-card:hover {
+  border-color: rgba(14,179,200,0.3);
+  transform: translateY(-3px);
+}
+.hero-card.featured {
+  border-color: rgba(14,179,200,0.25);
+}
+.hero-card-icon {
+  width: 42px; height: 42px;
+  border-radius: 10px;
+  background: rgba(14,179,200,0.12);
+  display: flex; align-items: center; justify-content: center;
+  font-size: 20px;
+  margin-bottom: 14px;
+}
+.hero-card h4 {
+  font-size: 13.5px;
+  font-weight: 700;
+  color: #d8e4f0;
+  margin-bottom: 5px;
+  font-family: var(--ff-body);
+}
+.hero-card p { font-size: 12px; color: #6a7e96; line-height: 1.6; }
+
+/* ================================================================
+   ABOUT
+   ================================================================ */
+#about { background: var(--slate); }
+.about-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 72px;
+  align-items: start;
+}
+.about-badges {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-bottom: 28px;
+}
+.badge {
+  background: var(--white);
+  border: 1px solid var(--border);
+  color: var(--text);
+  font-size: 12px;
+  font-weight: 600;
+  padding: 5px 13px;
+  border-radius: 20px;
+}
+
+/* More CSS here, but truncated for brevity */
+</style>
 </head>
 <body>
 
@@ -26,10 +426,26 @@
       <li><a href="#hero">Home</a></li>
       <li><a href="#about">About Us</a></li>
       <li><a href="#services">Services</a></li>
-      <li><a href="#products">Training</a></li>
+      <li class="nav-dropdown">
+        <a href="#products">Products</a>
+        <ul class="dropdown-menu">
+          <li class="dropdown-group">
+            <a href="digsilent-powerfactory.html">DIgSILENT PowerFactory</a>
+            <ul>
+              <li><a href="digsilent-applications.html">Applications</a></li>
+              <li><a href="digsilent-features.html">Features</a></li>
+            </ul>
+          </li>
+          <li class="dropdown-group">
+            <a href="ibfriedrich.html">TARGET 3001!</a>
+            <ul>
+              <li><a href="ibfriedrich-applications.html">Applications</a></li>
+              <li><a href="ibfriedrich-features.html">Features</a></li>
+            </ul>
+          </li>
+        </ul>
+      </li>
       <li><a href="#events">Events</a></li>
-      <li><a href="#why">Why Us</a></li>
-      <li><a href="#">Career</a></li>
       <li><a href="#contact" class="nav-cta">Contact Us</a></li>
     </ul>
 
@@ -74,22 +490,22 @@
     </div>
     <div class="hero-cards">
       <div class="hero-card featured fade-in">
-        <div class="hero-card-icon">🤖</div>
+        <div class="hero-card-icon"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="#0eb3c8" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="11" width="18" height="10" rx="2"/><circle cx="12" cy="5" r="3"/><line x1="8" y1="16" x2="8" y2="16.01"/><line x1="16" y1="16" x2="16" y2="16.01"/><line x1="12" y1="16" x2="12" y2="18"/></svg></div>
         <h4>AI Thinkering Lab</h4>
         <p>End-to-end lab setup for schools with latest tech</p>
       </div>
       <div class="hero-card fade-in">
-        <div class="hero-card-icon">🎓</div>
+        <div class="hero-card-icon"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="#0eb3c8" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M22 10v6M2 10l10-5 10 5-10 5z"/><path d="M6 12v5c0 1.1 2.7 3 6 3s6-1.9 6-3v-5"/></svg></div>
         <h4>Future Lab</h4>
         <p>AI &amp; Robotics ecosystems for universities</p>
       </div>
       <div class="hero-card fade-in">
-        <div class="hero-card-icon">🏭</div>
+        <div class="hero-card-icon"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="#0eb3c8" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M2 20h20"/><path d="M5 20V8l4-4h6l4 4v12"/><path d="M9 20v-4h6v4"/><line x1="9" y1="10" x2="9" y2="10.01"/><line x1="15" y1="10" x2="15" y2="10.01"/></svg></div>
         <h4>MSME Solutions</h4>
         <p>Lean certification &amp; optimisation for businesses</p>
       </div>
       <div class="hero-card featured fade-in">
-        <div class="hero-card-icon">📋</div>
+        <div class="hero-card-icon"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="#0eb3c8" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M9 12l2 2 4-4"/><path d="M4 7V4a2 2 0 012-2h12a2 2 0 012 2v16a2 2 0 01-2 2H6a2 2 0 01-2-2v-3"/><line x1="9" y1="17" x2="15" y2="17"/></svg></div>
         <h4>ZED Certification</h4>
         <p>Government-backed quality certification support</p>
       </div>
@@ -144,27 +560,27 @@
     <p class="section-sub">Five core capability areas, each delivering measurable outcomes for our clients.</p>
     <div class="expertise-grid" style="margin-top:40px">
       <div class="exp-card fade-in">
-        <div class="exp-icon">💻</div>
+        <div class="exp-icon"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="#0eb3c8" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><polyline points="16 18 22 12 16 6"/><polyline points="8 6 2 12 8 18"/><line x1="14" y1="4" x2="10" y2="20"/></svg></div>
         <h4>Software Development &amp; Sales</h4>
         <p>Custom-built, scalable, and business-focused software solutions.</p>
       </div>
       <div class="exp-card fade-in">
-        <div class="exp-icon">🤖</div>
+        <div class="exp-icon"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="#0eb3c8" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2a4 4 0 014 4c0 1.95-1.4 3.58-3.25 3.93"/><path d="M8.24 9.93A4 4 0 0112 2"/><rect x="6" y="12" width="12" height="8" rx="2"/><line x1="9" y1="16" x2="9" y2="16.01"/><line x1="15" y1="16" x2="15" y2="16.01"/><path d="M9 20v2"/><path d="M15 20v2"/></svg></div>
         <h4>AI &amp; Robotics Labs</h4>
         <p>End-to-end lab setup for schools and colleges with latest tech.</p>
       </div>
       <div class="exp-card fade-in">
-        <div class="exp-icon">📚</div>
+        <div class="exp-icon"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="#0eb3c8" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M4 19.5A2.5 2.5 0 016.5 17H20"/><path d="M6.5 2H20v20H6.5A2.5 2.5 0 014 19.5v-15A2.5 2.5 0 016.5 2z"/><line x1="8" y1="7" x2="16" y2="7"/><line x1="8" y1="11" x2="13" y2="11"/></svg></div>
         <h4>Training &amp; Skill Development</h4>
         <p>Hands-on programs designed for real-world application.</p>
       </div>
       <div class="exp-card fade-in">
-        <div class="exp-icon">🏭</div>
+        <div class="exp-icon"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="#0eb3c8" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M13 2L3 14h9l-1 8 10-12h-9l1-8z"/></svg></div>
         <h4>MSME Lean Certification</h4>
         <p>Process optimisation and efficiency improvement solutions.</p>
       </div>
       <div class="exp-card fade-in">
-        <div class="exp-icon">⚙️</div>
+        <div class="exp-icon"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="#0eb3c8" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="3"/><path d="M19.4 15a1.65 1.65 0 00.33 1.82l.06.06a2 2 0 01-2.83 2.83l-.06-.06a1.65 1.65 0 00-1.82-.33 1.65 1.65 0 00-1 1.51V21a2 2 0 01-4 0v-.09A1.65 1.65 0 009 19.4a1.65 1.65 0 00-1.82.33l-.06.06a2 2 0 01-2.83-2.83l.06-.06A1.65 1.65 0 004.68 15a1.65 1.65 0 00-1.51-1H3a2 2 0 010-4h.09A1.65 1.65 0 004.6 9a1.65 1.65 0 00-.33-1.82l-.06-.06a2 2 0 012.83-2.83l.06.06A1.65 1.65 0 009 4.68a1.65 1.65 0 001-1.51V3a2 2 0 014 0v.09a1.65 1.65 0 001 1.51 1.65 1.65 0 001.82-.33l.06-.06a2 2 0 012.83 2.83l-.06.06A1.65 1.65 0 0019.4 9a1.65 1.65 0 001.51 1H21a2 2 0 010 4h-.09a1.65 1.65 0 00-1.51 1z"/></svg></div>
         <h4>Technology Products</h4>
         <p>Latest tools and systems to enhance productivity and growth.</p>
       </div>
@@ -196,22 +612,12 @@
         <p>Advanced research-grade AI &amp; Robotics ecosystems designed for higher education with project-based learning frameworks.</p>
       </div>
       <div class="svc-card fade-in">
-        <div class="svc-num">03 — Professionals</div>
-        <h4>Advance Training Programs</h4>
-        <p>Industry-aligned advanced training programs in AI, robotics, IoT, and emerging technologies for professionals.</p>
+        <div class="svc-num">03 — Development</div>
+        <h4>Software Development & Product Engineering</h4>
+        <p>Custom software development services for education, enterprise, and industrial automation projects.</p>
       </div>
       <div class="svc-card fade-in">
-        <div class="svc-num">04 — MSME</div>
-        <h4>Training Programs for MSMEs</h4>
-        <p>Targeted programs to help small and medium enterprises adopt technology and improve operational processes.</p>
-      </div>
-      <div class="svc-card fade-in">
-        <div class="svc-num">05 — Workforce</div>
-        <h4>Skill Development Trainings</h4>
-        <p>Government-aligned skill development initiatives to prepare the workforce for Industry 4.0 and beyond.</p>
-      </div>
-      <div class="svc-card fade-in">
-        <div class="svc-num">06 — Certification</div>
+        <div class="svc-num">04 — Certification</div>
         <h4>MSME Lean &amp; ZED Certification</h4>
         <p>End-to-end support for MSME Lean Certification and Zero Defect Zero Effect (ZED) government certification schemes.</p>
       </div>
@@ -317,91 +723,46 @@
   </div>
 </section>
 
-<!-- ========================================================== -->
-<!-- WHY US                                                      -->
-<!-- ========================================================== -->
-<section id="why">
-  <div class="container">
-    <div class="fade-in">
-      <span class="section-eyebrow">Why InteliHeads</span>
-      <h2 class="section-title">What Sets <em>Us Apart</em></h2>
-      <p class="section-sub">Trusted by institutions and businesses across India for end-to-end technology and training solutions.</p>
-    </div>
-    <div class="why-grid">
-      <div class="why-item fade-in">
-        <div class="why-icon">🎯</div>
-        <h4>Industry + Education Expertise</h4>
-        <p>Deep domain knowledge spanning both corporate technology environments and educational institutions, enabling us to bridge the gap between learning and application.</p>
-      </div>
-      <div class="why-item fade-in">
-        <div class="why-icon">🔗</div>
-        <h4>End-to-End Solutions</h4>
-        <p>From initial setup to ongoing training and certification support — we handle the entire lifecycle so you can focus on outcomes, not logistics.</p>
-      </div>
-      <div class="why-item fade-in">
-        <div class="why-icon">🚀</div>
-        <h4>Future-Ready Technologies</h4>
-        <p>We deploy only current, industry-relevant technologies — ensuring that every lab, training program, and certification is aligned with where the world is heading.</p>
-      </div>
-      <div class="why-item fade-in">
-        <div class="why-icon">🏛️</div>
-        <h4>Trusted by Institutions &amp; Businesses</h4>
-        <p>A growing network of schools, universities, and MSMEs across India rely on InteliHeads for technology implementation and workforce development programs.</p>
-      </div>
-      <div class="why-item fade-in">
-        <div class="why-icon">🔧</div>
-        <h4>Focus on Practical Implementation</h4>
-        <p>We prioritise hands-on, real-world application over theory — every program, lab, and solution is designed to produce measurable, practical results from day one.</p>
-      </div>
-      <div class="why-item fade-in">
-        <div class="why-icon">🇮🇳</div>
-        <h4>Made for India's Growth Story</h4>
-        <p>Aligned with India's national programs on skill development, MSME support, and digital transformation — we understand the local context and regulatory landscape.</p>
-      </div>
-    </div>
-  </div>
-</section>
 
 <!-- ========================================================== -->
 <!-- EVENTS                                                      -->
 <!-- ========================================================== -->
-<section id="events">
-  <div class="container">
+<section id="events" style="background: var(--ink); position: relative; overflow: hidden; padding: 100px 0;">
+  <!-- Animated grid background -->
+  <div style="position:absolute;inset:0;background-image:linear-gradient(rgba(14,179,200,0.04) 1px,transparent 1px),linear-gradient(90deg,rgba(14,179,200,0.04) 1px,transparent 1px);background-size:60px 60px;pointer-events:none;"></div>
+  <!-- Glow effects -->
+  <div style="position:absolute;top:-120px;left:50%;transform:translateX(-50%);width:600px;height:600px;background:radial-gradient(circle,rgba(14,179,200,0.12) 0%,transparent 60%);pointer-events:none;"></div>
+  <div style="position:absolute;bottom:-80px;right:-80px;width:400px;height:400px;background:radial-gradient(circle,rgba(232,115,58,0.08) 0%,transparent 60%);pointer-events:none;"></div>
+  <div class="container" style="position:relative;z-index:1;text-align:center;">
     <div class="fade-in">
-      <span class="section-eyebrow">Upcoming</span>
-      <h2 class="section-title">Events <em>&amp; Programs</em></h2>
-      <p class="section-sub">Workshops, certification drives, and open labs happening across India.</p>
+      <span class="section-eyebrow" style="color:var(--copper);justify-content:center;padding-left:0;">Stay Tuned</span>
+      <h2 class="section-title" style="color:var(--white);font-size:clamp(36px,5vw,56px);margin-bottom:24px;">Events &amp; Programs</h2>
     </div>
-    <div class="events-grid">
-      <div class="event-card fade-in">
-        <div class="event-head">
-          <div class="event-date"><div class="day">15</div><div class="month">May</div></div>
-          <div class="event-head-text">
-            <h4>AI Lab Open Day — Noida</h4>
-            <p>Free demo for school principals &amp; educators</p>
-          </div>
-        </div>
-        <div class="event-body">Experience our AI Thinkering Lab setup firsthand. Open to school administrators, teachers, and parents. Venue: Sector-51, Noida.</div>
+    <!-- Coming Soon Banner -->
+    <div class="fade-in" style="margin-top:40px;padding:60px 40px;border-radius:20px;border:1.5px solid rgba(14,179,200,0.2);background:linear-gradient(135deg,rgba(21,37,64,0.9) 0%,rgba(13,26,46,0.95) 100%);backdrop-filter:blur(16px);max-width:700px;margin-left:auto;margin-right:auto;position:relative;overflow:hidden;">
+      <!-- Inner glow -->
+      <div style="position:absolute;top:0;left:50%;transform:translateX(-50%);width:300px;height:3px;background:linear-gradient(90deg,transparent,var(--teal),transparent);border-radius:0 0 50% 50%;"></div>
+      <!-- Animated pulse dot -->
+      <div style="display:inline-flex;align-items:center;gap:10px;background:rgba(14,179,200,0.1);border:1px solid rgba(14,179,200,0.25);padding:8px 20px;border-radius:30px;margin-bottom:28px;">
+        <span style="width:8px;height:8px;border-radius:50%;background:var(--teal);animation:pulse 2s ease-in-out infinite;"></span>
+        <span style="font-size:12px;font-weight:700;letter-spacing:0.12em;text-transform:uppercase;color:var(--teal);">Coming Soon</span>
       </div>
-      <div class="event-card fade-in">
-        <div class="event-head">
-          <div class="event-date"><div class="day">22</div><div class="month">May</div></div>
-          <div class="event-head-text">
-            <h4>ZED Certification Workshop</h4>
-            <p>MSME orientation session — Noida</p>
-          </div>
+      <h3 style="font-family:var(--ff-display);font-size:clamp(28px,4vw,42px);font-weight:600;color:var(--white);line-height:1.15;margin-bottom:18px;letter-spacing:-0.02em;">Something <em style="color:var(--teal);font-style:italic;">Exciting</em> is Brewing</h3>
+      <p style="font-size:16px;color:#6a7e96;line-height:1.78;max-width:480px;margin:0 auto 32px;">We're preparing workshops, certification drives, robotics bootcamps, and open lab days across India. Stay connected for announcements.</p>
+      <!-- Decorative icons row -->
+      <div style="display:flex;justify-content:center;gap:16px;flex-wrap:wrap;">
+        <div style="display:flex;align-items:center;gap:8px;padding:10px 18px;border-radius:10px;background:rgba(14,179,200,0.08);border:1px solid rgba(14,179,200,0.15);">
+          <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#0eb3c8" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>
+          <span style="font-size:12.5px;font-weight:600;color:#8a9fb8;">Workshops</span>
         </div>
-        <div class="event-body">Learn how your business can achieve ZED certification. Expert-led session covering documentation, audit preparation, and government incentives.</div>
-      </div>
-      <div class="event-card fade-in">
-        <div class="event-head">
-          <div class="event-date"><div class="day">05</div><div class="month">Jun</div></div>
-          <div class="event-head-text">
-            <h4>Robotics Bootcamp for Students</h4>
-            <p>2-day intensive for college students</p>
-          </div>
+        <div style="display:flex;align-items:center;gap:8px;padding:10px 18px;border-radius:10px;background:rgba(232,115,58,0.08);border:1px solid rgba(232,115,58,0.15);">
+          <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#e8733a" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M22 10v6M2 10l10-5 10 5-10 5z"/><path d="M6 12v5c0 1.1 2.7 3 6 3s6-1.9 6-3v-5"/></svg>
+          <span style="font-size:12.5px;font-weight:600;color:#8a9fb8;">Bootcamps</span>
         </div>
-        <div class="event-body">Hands-on robotics training with real hardware. Open to engineering and BSc students. Certificate of completion provided. Limited seats available.</div>
+        <div style="display:flex;align-items:center;gap:8px;padding:10px 18px;border-radius:10px;background:rgba(14,179,200,0.08);border:1px solid rgba(14,179,200,0.15);">
+          <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#0eb3c8" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/></svg>
+          <span style="font-size:12.5px;font-weight:600;color:#8a9fb8;">Open Labs</span>
+        </div>
       </div>
     </div>
   </div>
@@ -428,10 +789,6 @@
           </div>
         </div>
         <div class="form-group">
-          <label for="subject">Subject</label>
-          <input type="text" id="subject" name="subject" placeholder="How can we help?">
-        </div>
-        <div class="form-group">
           <label for="message">Your Message</label>
           <textarea id="message" name="message" rows="5" placeholder="Tell us about your requirements…" required></textarea>
         </div>
@@ -441,31 +798,24 @@
 
     <div class="contact-info fade-in">
       <div class="ci-item">
-        <div class="ci-icon">📍</div>
+        <div class="ci-icon"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="#0eb3c8" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z"/><circle cx="12" cy="10" r="3"/></svg></div>
         <div>
           <div class="ci-label">Office Address</div>
           <div class="ci-value">Office No. 410, 4th Floor, Sharma Market,<br>Hoshiyarpur, Sector-51, Noida — 201301</div>
         </div>
       </div>
       <div class="ci-item">
-        <div class="ci-icon">📞</div>
+        <div class="ci-icon"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="#0eb3c8" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07 19.5 19.5 0 01-6-6A19.79 19.79 0 012.12 4.18 2 2 0 014.11 2h3a2 2 0 012 1.72c.127.96.362 1.903.7 2.81a2 2 0 01-.45 2.11L8.09 9.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45c.907.338 1.85.573 2.81.7A2 2 0 0122 16.92z"/></svg></div>
         <div>
           <div class="ci-label">Phone</div>
-          <div class="ci-value">+91-8076842489</div>
+          <div class="ci-value">+91-8076842489<br>+91 9810266404</div>
         </div>
       </div>
       <div class="ci-item">
-        <div class="ci-icon">✉️</div>
+        <div class="ci-icon"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="#0eb3c8" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg></div>
         <div>
           <div class="ci-label">Email</div>
           <div class="ci-value">info@inteliheads.in</div>
-        </div>
-      </div>
-      <div class="ci-item">
-        <div class="ci-icon">🌐</div>
-        <div>
-          <div class="ci-label">Website</div>
-          <div class="ci-value">www.inteliheads.in</div>
         </div>
       </div>
     </div>

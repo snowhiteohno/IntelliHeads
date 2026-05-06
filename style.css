@@ -137,14 +137,16 @@ section { padding: 88px 0; }
   position: sticky;
   top: 0;
   z-index: 200;
-  background: var(--ink);
-  border-bottom: 2px solid var(--teal);
+  background: linear-gradient(180deg, rgba(13,26,46,1) 0%, rgba(13,26,46,0.98) 100%);
+  border-bottom: 2px solid;
+  border-image: linear-gradient(90deg, var(--teal), var(--copper), var(--teal)) 1;
+  box-shadow: 0 4px 24px rgba(0,0,0,0.25);
 }
 .nav-inner {
   display: flex;
   align-items: center;
-  height: 66px;
-  gap: 16px;
+  height: 76px;
+  gap: 20px;
 }
 .nav-logo {
   display: flex;
@@ -154,9 +156,13 @@ section { padding: 88px 0; }
   text-decoration: none;
 }
 .nav-logo img {
-  height: 38px;
+  height: 48px;
   width: auto;
-  filter: brightness(1.05);
+  border-radius: 8px;
+  background: transparent;
+  border: 1.5px solid rgba(14,179,200,0.25);
+  padding: 2px;
+  box-shadow: 0 0 12px rgba(14,179,200,0.15);
 }
 .nav-logo-text {
   display: flex;
@@ -166,9 +172,9 @@ section { padding: 88px 0; }
 .nav-logo-text .brand {
   font-family: var(--ff-body);
   font-weight: 700;
-  font-size: 16px;
+  font-size: 18px;
   color: var(--white);
-  letter-spacing: 0.02em;
+  letter-spacing: 0.03em;
 }
 .nav-logo-text .brand span { color: var(--teal); }
 .nav-logo-text .tagline {
@@ -183,30 +189,29 @@ section { padding: 88px 0; }
   gap: 2px;
   margin-left: auto;
 }
+.nav-links > li { position: relative; }
 .nav-links li a {
   display: block;
-  padding: 7px 13px;
-  font-size: 13.5px;
+  padding: 9px 15px;
+  font-size: 14.5px;
   font-weight: 500;
   color: #8a9fb8;
-  border-radius: 5px;
-  transition: color 0.18s, background 0.18s;
+  border-radius: 6px;
+  transition: color 0.22s, background 0.22s;
 }
-.nav-links li a:hover,
-.nav-links li a.active {
+.nav-links li:hover > a {
   color: var(--white);
-  background: rgba(14,179,200,0.12);
 }
 .nav-cta {
   margin-left: 10px;
   background: var(--teal) !important;
   color: var(--ink) !important;
   font-weight: 700 !important;
-  padding: 8px 20px !important;
-  border-radius: 5px;
-  transition: background 0.2s !important;
+  padding: 10px 24px !important;
+  border-radius: 6px;
+  transition: background 0.2s, transform 0.2s, box-shadow 0.2s !important;
 }
-.nav-cta:hover { background: #12c9e0 !important; }
+.nav-cta:hover { background: #12c9e0 !important; transform: translateY(-1px); box-shadow: 0 4px 16px rgba(14,179,200,0.3); }
 .nav-hamburger {
   display: none;
   background: none;
@@ -609,6 +614,56 @@ section { padding: 88px 0; }
   transform: translateX(3px);
 }
 
+/* ── Product expand/collapse ── */
+.product-item p {
+  max-height: 0;
+  overflow: hidden;
+  opacity: 0;
+  margin: 0;
+  transition: max-height 0.35s var(--ease-out), opacity 0.3s var(--ease-out), margin 0.3s var(--ease-out);
+}
+.product-item[aria-expanded="true"] p {
+  max-height: 200px;
+  opacity: 1;
+  margin-top: 8px;
+}
+.product-arrow {
+  transition: all 0.25s var(--ease-out);
+}
+.product-item[aria-expanded="true"] .product-arrow {
+  background: var(--teal);
+  color: var(--ink);
+  border-color: var(--teal);
+  transform: rotate(90deg);
+}
+
+/* ── SVG icon containers ── */
+.hero-card-icon svg,
+.exp-icon svg,
+.why-icon svg,
+.ci-icon svg {
+  width: 22px;
+  height: 22px;
+}
+.section-img {
+  width: 100%;
+  border-radius: 16px;
+  box-shadow: var(--shadow-md);
+  object-fit: cover;
+}
+.about-img {
+  width: 100%;
+  border-radius: 14px;
+  box-shadow: var(--shadow-md);
+  object-fit: cover;
+  max-height: 480px;
+}
+.event-img {
+  width: 100%;
+  height: 160px;
+  object-fit: cover;
+}
+
 /* ================================================================
    WHY US
    ================================================================ */
@@ -862,10 +917,24 @@ footer {
     display: flex;
     flex-direction: column;
     position: absolute;
-    top: 66px; left: 0; right: 0;
+    top: 76px; left: 0; right: 0;
     background: var(--ink);
     padding: 16px 0 20px;
     border-bottom: 2px solid var(--teal);
+  }
+  .nav-links.open li ul {
+    display: block;
+    position: static;
+    background: transparent;
+    border: none;
+    padding: 0;
+    margin: 0;
+  }
+  .nav-links.open li ul li a {
+    padding-left: 28px;
+  }
+  .nav-links.open .dropdown-group > a {
+    padding-left: 18px;
   }
 
   .hero-inner,
