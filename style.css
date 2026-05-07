@@ -1033,3 +1033,12 @@ footer {
   .hero-stats { flex-wrap: wrap; }
   .expertise-grid { grid-template-columns: 1fr 1fr; }
 }
+/* Feature Rows */
+.feature-row { display: flex; align-items: center; gap: 40px; margin-bottom: 60px; }
+.feature-row:nth-child(even) { flex-direction: row-reverse; }
+.feature-text { flex: 1; }
+.feature-text h2 { font-family: var(--ff-display); font-size: 32px; color: var(--white); margin-bottom: 15px; }
+.feature-text p { color: #8a9fb8; font-size: 16px; line-height: 1.6; }
+.feature-image { flex: 1; border-radius: 12px; overflow: hidden; box-shadow: 0 10px 30px rgba(0,0,0,0.5); }
+.feature-image img { width: 100%; height: auto; display: block; border: 1px solid rgba(14,179,200,0.2); border-radius: 12px; }
+@media (max-width: 768px) { .feature-row { flex-direction: column !important; gap: 20px; } }
