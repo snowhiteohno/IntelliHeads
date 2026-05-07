@@ -1042,3 +1042,19 @@ footer {
 .feature-image { flex: 1; border-radius: 12px; overflow: hidden; box-shadow: 0 10px 30px rgba(0,0,0,0.5); }
 .feature-image img { width: 100%; height: auto; display: block; border: 1px solid rgba(14,179,200,0.2); border-radius: 12px; }
 @media (max-width: 768px) { .feature-row { flex-direction: column !important; gap: 20px; } }
+
+@media (max-width: 768px) {
+  .nav-links.open .dropdown-menu {
+    display: flex !important;
+    flex-direction: column;
+    gap: 15px;
+    position: static !important;
+    opacity: 1 !important;
+    visibility: visible !important;
+    transform: none !important;
+    box-shadow: none !important;
+    padding: 10px 0 10px 10px !important;
+  }
+  .clients-grid { grid-template-columns: 1fr !important; }
+  .tab-btn { width: 100%; margin-bottom: 5px; }
+}
